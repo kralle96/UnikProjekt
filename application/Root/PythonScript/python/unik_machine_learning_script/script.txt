@@ -1,0 +1,69 @@
+import sys
+import numpy as np
+import pandas as pd
+import sklearn
+import pickle
+import os
+from sklearn.preprocessing import RobustScaler
+import joblib
+
+
+#plot recieved data into dataframe
+data = pd.DataFrame({
+                     'Sex' : ["Male"],
+                     'ResidentsInTheTenancy' : [1],
+                     'NumberOfRoomsInTheTenancy' : [1],
+                     'TypeOfTenancy' : ["Terraced_Chain_And_SemiDetachedHouses"],
+                     'LocationOfTenancy' : ["The_Capital_Region_of_Denmark"],
+                     'ResidentAgeGroup' : ["18-24"]})
+
+#Convert data into numerical values from the mapping during data preperation
+
+with open('Unik_machine_learning/cat_mapping/sex_mapping.pkl', 'rb') as pickle_file:
+    sex_mapping = pickle.load(pickle_file)
+
+with open('Unik_machine_learning/cat_mapping/type_of_tenancy_mapping.pkl', 'rb') as pickle_file:
+    type_of_tenancy_mapping = pickle.load(pickle_file)
+
+with open('Unik_machine_learning/cat_mapping/location_of_tenancy_mapping.pkl', 'rb') as pickle_file:
+    location_of_tenancy_mapping = pickle.load(pickle_file)
+
+with open('Unik_machine_learning/cat_mapping/resident_age_group_mapping.pkl', 'rb') as pickle_file:
+    resident_age_group_mapping = pickle.load(pickle_file)
+
+for key, value in sex_mapping.items():
+  if str(key) in str(data['Sex']):
+    data['Sex'] = value
+
+for key, value in type_of_tenancy_mapping.items():
+  if str(key) in str(data['TypeOfTenancy']):
+    data['TypeOfTenancy'] = value
+
+for key, value in location_of_tenancy_mapping.items():
+  if str(key) in str(data['LocationOfTenancy']):
+    data['LocationOfTenancy'] = value
+
+for key, value in resident_age_group_mapping.items():
+  if str(key) in str(data['ResidentAgeGroup']):
+    data['ResidentAgeGroup'] = value
+
+
+
+#Import trained model
+
+with open('Unik_machine_learning/model/SVR_baseline.pkl', 'rb') as pickle_file:
+    model = pickle.load(pickle_file)
+
+# Import rescalers the model was trained on
+rbX = joblib.load('Unik_machine_learning/scaler/rbX.bin')
+rbY = joblib.load('Unik_machine_learning/scaler/rbY.bin')
+
+#Rescale input and predict
+data = rbX.transform(data)
+prediction = model.predict(data)
+
+#Rescale output back to original form
+prediction = rbY.inverse_transform(prediction.reshape(-1, 1))
+
+output = float(prediction)
+print(output)

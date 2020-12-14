@@ -1,0 +1,222 @@
+﻿using Application.Exceptions;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Application.Services.Machine_Learning
+{
+    public class NumberOfYearsPredictionPython : IPythonScript
+    {
+        public string Script { get; private set; }
+        public string Sex { get; private set; }
+        public int ResidentsInTheTenancy { get; private set; }
+        public int NumberOfRoomsInTheTenancy { get; private set; }
+        public string TypeOfTenancy { get; private set; }
+        public string ResidentAgeGroup { get; private set; }
+        public string LocationOfTenancy { get; private set; }
+        public List<object> Parameters { get; private set; }
+        public string ScriptPath { get; set; } = @"..\Bolig.Application\Root\PythonScript\python\unik_machine_learning_script\test\test.py";
+       
+        public NumberOfYearsPredictionPython(string sex, int residentsInTheTenancy, int numberOfRoomsInTheTenancy,
+            string typeOfTenancy, string locationOfTenancy, int residentAge)
+        {
+            //var s = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            ValidateInputForModel(sex, typeOfTenancy, locationOfTenancy, residentAge);
+            ResidentsInTheTenancy = residentsInTheTenancy;
+            NumberOfRoomsInTheTenancy = numberOfRoomsInTheTenancy;
+
+            Parameters = new List<object>();
+            Parameters.Add(Sex);
+            Parameters.Add(ResidentsInTheTenancy);
+            Parameters.Add(NumberOfRoomsInTheTenancy);
+            Parameters.Add(TypeOfTenancy);
+            Parameters.Add(LocationOfTenancy);
+            Parameters.Add(ResidentAgeGroup);
+
+            Script = SetScript();
+        }
+        public void ValidateInputForModel(string sex, string typeOfTenancy, string locationOfTenancy,
+            int residentAge)
+        {
+            TranslateSex(sex);
+            TranslateTypeOfTenancy(typeOfTenancy);
+            TranslateLocationOfTenancy(locationOfTenancy);
+            SplitResidentIntoAgeGroup(residentAge);
+        }
+
+        private void TranslateSex(string sex)
+        {
+            if (sex == "Mand")
+            {
+                Sex = "Male";
+            }
+            else if (sex == "Kvinde")
+            {
+                Sex = "Female";
+            }
+            else
+            {
+                throw new AttributeDoesNotExistInModelException($"Model has not been trained on this attribute");
+            }
+        }
+        private void TranslateTypeOfTenancy(string typeOfTenancy)
+        {
+            if (typeOfTenancy == "Lejlighed")
+            {
+                TypeOfTenancy = "Apartment";
+            }
+            else
+            {
+                TypeOfTenancy = "Terraced_Chain_And_SemiDetachedHouses";
+
+            }
+        }
+        private void TranslateLocationOfTenancy(string locationOfTenancy)
+        {
+            if (locationOfTenancy == "Nordjylland")
+            {
+                LocationOfTenancy = "The_Region_of_Northern_Jutland";
+            }
+            else if (locationOfTenancy == "Midtjylland")
+            {
+                LocationOfTenancy = "Central_Jutland_Region";
+            }
+            else if (locationOfTenancy == "Syddanmark")
+            {
+                LocationOfTenancy = "The_Region_of_Southern_Denmark";
+            }
+            else if (locationOfTenancy == "Sjælland")
+            {
+                LocationOfTenancy = "Region_Zealand";
+            }
+            else if (locationOfTenancy == "Hovedstaden")
+            {
+                LocationOfTenancy = "The_Capital_Region_of_Denmark";
+            }
+            else
+            {
+                throw new AttributeDoesNotExistInModelException($"Model has not been trained on this attribute");
+            }
+        }
+        private void SplitResidentIntoAgeGroup(int residentAge)
+        {
+
+            if (residentAge >= 18 && residentAge <= 24)
+            {
+                ResidentAgeGroup = "18-24";
+            }
+            else if (residentAge >= 25 && residentAge <= 29)
+            {
+                ResidentAgeGroup = "25-29";
+            }
+            else if (residentAge >= 30 && residentAge <= 39)
+            {
+                ResidentAgeGroup = "30-39";
+            }
+            else if (residentAge >= 40 && residentAge <= 49)
+            {
+                ResidentAgeGroup = "40-49";
+            }
+            else if (residentAge >= 50 && residentAge <= 59)
+            {
+                ResidentAgeGroup = "50-59";
+            }
+            else if (residentAge >= 60 && residentAge <= 69)
+            {
+                ResidentAgeGroup = "60-69";
+            }
+            else if (residentAge >= 70 && residentAge <= 79)
+            {
+                ResidentAgeGroup = "70-79";
+            }
+            else if (residentAge >= 80 && residentAge <= 89)
+            {
+                ResidentAgeGroup = "80-89";
+            }
+            else if (residentAge >=90)
+            {
+                ResidentAgeGroup = "90_or_above";
+            }
+            else
+            {
+                throw new AttributeDoesNotExistInModelException($"Model has not been trained on this attribute");
+            }
+        }
+        public string SetScript()
+        {
+            return @"import sys
+import numpy as np
+import pandas as pd
+import pkg_resources
+#pkg_resources.require('sklearn == 0.23.2')
+import sklearn
+import pickle
+import os
+from sklearn.preprocessing import RobustScaler
+import joblib
+
+#plot recieved data into dataframe
+data = pd.DataFrame({
+    'Sex' : [sys.argv[1]],
+                     'ResidentsInTheTenancy' : [int(sys.argv[2])],
+                     'NumberOfRoomsInTheTenancy' : [int(sys.argv[3])],
+                     'TypeOfTenancy' : [sys.argv[4]],
+                     'LocationOfTenancy' : [sys.argv[5]],
+                     'ResidentAgeGroup' : [sys.argv[6]]})
+
+
+with open('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/Cat_mapping/sex_mapping.pkl', 'rb') as pickle_file:
+    sex_mapping = pickle.load(pickle_file)
+
+with open('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/Cat_mapping/type_of_tenancy_mapping.pkl', 'rb') as pickle_file:
+    type_of_tenancy_mapping = pickle.load(pickle_file)
+
+with open('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/Cat_mapping/location_of_tenancy_mapping.pkl', 'rb') as pickle_file:
+    location_of_tenancy_mapping = pickle.load(pickle_file)
+
+with open('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/Cat_mapping/resident_age_group_mapping.pkl', 'rb') as pickle_file:
+    resident_age_group_mapping = pickle.load(pickle_file)
+
+for key, value in sex_mapping.items():
+  if str(key) in str(data['Sex']) :
+    data['Sex'] = value
+
+for key, value in type_of_tenancy_mapping.items():
+  if str(key) in str(data['TypeOfTenancy']) :
+    data['TypeOfTenancy'] = value
+
+for key, value in location_of_tenancy_mapping.items():
+  if str(key) in str(data['LocationOfTenancy']) :
+    data['LocationOfTenancy'] = value
+
+for key, value in resident_age_group_mapping.items():
+  if str(key) in str(data['ResidentAgeGroup']) :
+    data['ResidentAgeGroup'] = value
+
+
+#Import trained model
+
+with open('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/MLModel/SVR_baseline.pkl', 'rb') as pickle_file:
+    model = pickle.load(pickle_file)
+
+# Import rescalers the model was trained on
+rbX = joblib.load('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/Scalers/rbX.bin')
+rbY = joblib.load('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/Scalers/rbY.bin')
+
+#Rescale input and predict
+data = rbX.transform(data)
+prediction = model.predict(data)
+
+#Rescale output back to original form
+prediction = rbY.inverse_transform(prediction.reshape(-1, 1))
+
+output = float (prediction)
+print(output)";
+        }
+
+    }
+}
