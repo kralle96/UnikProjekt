@@ -3,15 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvc", "mvc.csproj", "{F4222E2B-3CF5-4790-B6C1-A022B702567F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mvc", "mvc.csproj", "{F4222E2B-3CF5-4790-B6C1-A022B702567F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6742553E-BEB3-4F5D-A9EE-453326426701} = {6742553E-BEB3-4F5D-A9EE-453326426701}
+		{96C3FE6F-3C67-45BA-A6B1-8C33ACCBE960} = {96C3FE6F-3C67-45BA-A6B1-8C33ACCBE960}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "application", "..\application\application.csproj", "{6742553E-BEB3-4F5D-A9EE-453326426701}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "application", "..\application\application.csproj", "{6742553E-BEB3-4F5D-A9EE-453326426701}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1EFF2E86-0D15-4B0C-A913-572C9DCF8710} = {1EFF2E86-0D15-4B0C-A913-572C9DCF8710}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domain", "..\domain\domain.csproj", "{1EFF2E86-0D15-4B0C-A913-572C9DCF8710}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "domain", "..\domain\domain.csproj", "{1EFF2E86-0D15-4B0C-A913-572C9DCF8710}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domainTest", "..\domainTest\domainTest.csproj", "{7ECF654C-A5F1-4A13-912A-A8A6DCC90656}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "domainTest", "..\domainTest\domainTest.csproj", "{7ECF654C-A5F1-4A13-912A-A8A6DCC90656}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1EFF2E86-0D15-4B0C-A913-572C9DCF8710} = {1EFF2E86-0D15-4B0C-A913-572C9DCF8710}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "infrastructure", "..\infrastructure\infrastructure.csproj", "{96C3FE6F-3C67-45BA-A6B1-8C33ACCBE960}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "infrastructure", "..\infrastructure\infrastructure.csproj", "{96C3FE6F-3C67-45BA-A6B1-8C33ACCBE960}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6742553E-BEB3-4F5D-A9EE-453326426701} = {6742553E-BEB3-4F5D-A9EE-453326426701}
+		{1EFF2E86-0D15-4B0C-A913-572C9DCF8710} = {1EFF2E86-0D15-4B0C-A913-572C9DCF8710}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Dto
+namespace application.Dto
 {
     class AnsoegningDto
     {

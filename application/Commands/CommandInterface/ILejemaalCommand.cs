@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Application.Commands.CommandModel;
+using application.Commands.CommandModel;
 
-namespace Application.Commands.CommandInterface
+namespace application.Commands.CommandInterface
 {
     public interface ILejemaalCommand
     {

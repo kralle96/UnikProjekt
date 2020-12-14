@@ -1,12 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using domain.Model;
 
-namespace Domain.Test
+namespace domainTest
 {
-    class LejemaalUnitTest
+    [TestClass]
+    public class LejemaalUnitTest
     {
+        Lejemaal lejemaal = new Lejemaal();
+
+        [TestMethod]
+        public void ValidateAdresse_StringToLong_Paas()
+        {
+            // Arrange
+            string adresse = "StringIsToLongToPaas";
+
+            // Act
+            bool test = lejemaal.ValidateAdresse(adresse);
+
+            // Assert
+            Assert.IsFalse(test);
+        }
+
+        [TestMethod]
+        public void ValidateAdresse_StringIsToShort_Paas()
+        {
+            // Arrange
+            string adresse = "h";
+
+            // Act
+            bool test = lejemaal.ValidateAdresse(adresse);
+
+            // Assert
+            Assert.IsFalse(test);
+        }
+
+        [TestMethod]
+        public void ValidateAdresse_StringContainsSpecialChars_Pass()
+        {
+            // Arrange
+            string adresse = "Vimmersvej/";
+
+            // Act
+            bool test = lejemaal.ValidateAdresse(adresse);
+
+            // Assert
+            Assert.IsFalse(test);
+        }
     }
 }

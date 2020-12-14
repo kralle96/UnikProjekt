@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using Domain.MyDomainService;
 
-namespace Domain.Model
+namespace domain.Model
 {
     public class Ejendom
     {
@@ -33,21 +32,5 @@ namespace Domain.Model
         {
             return new Ejendom(id, områdeNavn, type);
         }
-
-
-
-        //private Ejendom(int ejendomId, string områdeNavn, string type, IMyDomainService dm)
-        //{
-        //    dm.CheckUserMaaOpretteEjendom();
-        //    EjendomId = ejendomId;
-        //    OmrådeNavn = områdeNavn;
-        //    Type = type;
-        //}
-
-        //public static Ejendom Create(int ejendomId, string områdeNavn, string type, IMyDomainService)
-        //{
-        //    return new Ejendom(ejendomId, områdeNavn, type);
-        //}
-
     }
 }

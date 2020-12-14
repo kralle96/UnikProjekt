@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Application.Commands.CommandInterface;
-using Application.Commands.CommandModel;
-using Application.Commands.Repository;
-using Application.Queries.DtoInterface;
+using application.Commands.CommandInterface;
+using application.Commands.CommandModel;
+using application.Commands.Repository;
+using application.Queries.DtoInterface;
 
-namespace Application.Commands.ObjectCommand
+namespace application.Commands.ObjectCommand
 {
     // Bruges til Infrastructure niveau
     public class LejemaalCommand : ILejemaalCommand
@@ -22,7 +22,7 @@ namespace Application.Commands.ObjectCommand
 
         async Task ILejemaalCommand.Execute(LejemaalCommandModel.CreateLejemaal createLejemaal)
         {
-            var lejemaal = new Domain.Model.Lejemaal()
+            var lejemaal = new domain.Model.Lejemaal()
             {
                 //begynder på index 1, fordi starten af ID'et her vil være L for lejemaal
                 Adresse = createLejemaal.Lejemaal.Adresse,
@@ -43,7 +43,7 @@ namespace Application.Commands.ObjectCommand
 
             //awit _lejemaalRepository.Update(updateLejemaal)
 
-            var updatedLejemaal = new Domain.Model.Lejemaal()
+            var updatedLejemaal = new domain.Model.Lejemaal()
             {
                 Id = updateLejemaal.Lejemaal.LejemaalsId,
                 Adresse = updateLejemaal.Lejemaal.Adresse,

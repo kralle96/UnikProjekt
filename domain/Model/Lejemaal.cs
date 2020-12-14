@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using Domain.Exceptions;
+using domain.Exceptions;
 //using Domain.MyDomainService.Interface;
 
-namespace Domain.Model
+namespace domain.Model
 {
     public class Lejemaal
     {

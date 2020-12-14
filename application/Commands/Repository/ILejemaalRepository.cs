@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Commands.Repository
+namespace application.Commands.Repository
 {
     public interface ILejemaalRepository
     {
-        Task Save(Domain.Model.Lejemaal lejemaal);
-        Task<Domain.Model.Lejemaal> Load(int id);
-        Task Update(Domain.Model.Lejemaal lejemaal);
-        Task Delete(Domain.Model.Lejemaal lejemaal);
+        Task Save(domain.Model.Lejemaal lejemaal);
+        Task<domain.Model.Lejemaal> Load(int id);
+        Task Update(domain.Model.Lejemaal lejemaal);
+        Task Delete(domain.Model.Lejemaal lejemaal);
     }
 }

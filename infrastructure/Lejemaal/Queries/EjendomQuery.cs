@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.Dto;
-using Application.Queries.DtoInterface;
+using application.Dto;
+using application.Queries.DtoInterface;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Lejemaal.Queries
+namespace infrastructure.Lejemaal.Queries
 {
     public class EjendomQuery : IEjendomQuery
     {

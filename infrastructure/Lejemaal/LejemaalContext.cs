@@ -5,32 +5,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Lejemaal
+namespace infrastructure.Lejemaal
 {
     public class LejemaalContext : DbContext
     {
         
-        public DbSet<Domain.Model.Lejemaal> Lejemaal { get; set; }
-        public DbSet<Domain.Model.Udlejningsinfo> Udlejningsinfo { get; set; }
-        public DbSet<Domain.Model.Post> Post { get; set; }
-        public DbSet<Domain.Model.Selskab> Selskab { get; set; }
-        public DbSet<Domain.Model.Inventar> Inventar { get; set; }
-        public DbSet<Domain.Model.Ejendom> Ejendom { get; set; }
-        public DbSet<Domain.Model.StatistikLejeperiodeLejersAlder> StatistikLejeperiodeLejersAlder { get; set; }
+        public DbSet<domain.Model.Lejemaal> Lejemaal { get; set; }
+        public DbSet<domain.Model.Udlejningsinfo> Udlejningsinfo { get; set; }
+        public DbSet<domain.Model.Post> Post { get; set; }
+        public DbSet<domain.Model.Selskab> Selskab { get; set; }
+        public DbSet<domain.Model.Inventar> Inventar { get; set; }
+        public DbSet<domain.Model.Ejendom> Ejendom { get; set; }
+        public DbSet<domain.Model.StatistikLejeperiodeLejersAlder> StatistikLejeperiodeLejersAlder { get; set; }
         public LejemaalContext(DbContextOptions options) : base(options) {}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
             //1-n relationer
-            modelBuilder.Entity<Domain.Model.Selskab>()
+            modelBuilder.Entity<domain.Model.Selskab>()
                 .HasMany(l => l.Lejemaal)
                 .WithOne(c => c.Selskab);
 
-            modelBuilder.Entity<Domain.Model.Ejendom>()
+            modelBuilder.Entity<domain.Model.Ejendom>()
                 .HasMany(l => l.Lejemaal)
                 .WithOne(e => e.Ejendom);
 
-            modelBuilder.Entity<Domain.Model.Lejemaal>()
+            modelBuilder.Entity<domain.Model.Lejemaal>()
                 .HasOne(p => p.PostNr)
                 .WithMany(l => l.Lejemaal);
 
