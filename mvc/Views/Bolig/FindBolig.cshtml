@@ -1,0 +1,111 @@
+﻿@{
+    ViewData["Title"] = "Find bolig";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-3 col-sm-3 mb-4">
+            <div class="card-body bg-dark-purple rounded">
+                <h2>Søge kriterier</h2>
+
+                <section>
+                    <form>
+                        <label for="search">Søg på postummer:</label>
+                        <input class="text-muted w-100" type="text" id="search" name="search" placeholder="ex. 7100" />
+
+                        <div></div>
+
+                        <label for="range_weight">Weight: </label> <input type="range" name="weight" class="slider" min="0" max="100" value="75">
+                        <span class="slider_label"></span>
+
+                        <div class="filter-criteria mt-2">
+                            <h5>Boligtype</h5>
+                            <fieldset>
+                                <input type="checkbox" id="villa" name="villa" />
+                                <label for=" villa">Villa</label><br />
+
+
+                                <input type="checkbox" id="lejlighed" name="Lejlighed" />
+                                <label for=" lejlighed">Lejlighed</label><br />
+
+                            </fieldset>
+                        </div>
+
+                        <div class="filter-criteria mt-2">
+                            <h5>Værelser</h5>
+                            <fieldset>
+                                <input type="checkbox" id="1room" name="1" value="1" />
+                                <label for=" 1room">Delevenlig</label><br />
+
+                                <input type="checkbox" id="2room" name="2" value="2" />
+                                <label for=" 2room">Delevenlig</label><br />
+
+                                <input type="checkbox" id="3room" name="3" value="3" />
+                                <label for=" 3room">Delevenlig</label>
+                            </fieldset>
+                        </div>
+
+                        <div class="filter-criteria mt-2">
+                            <h5>Andre filtre</h5>
+                            <fieldset>
+                                <input type="checkbox" id="Delevenlig" name="delevenlig" value="delevenlig" />
+                                <label for=" delevenlig">Delevenlig</label><br />
+
+                                <input type="checkbox" id="animals" name="animals" value="animals" />
+                                <label for=" animals">Husdyr tilladt</label>
+
+
+                            </fieldset>
+                            <button class="btn btn-primary">Ryd filter</button>
+                        </div>
+
+                    </form>
+                </section>
+
+            </div>
+
+        </div>
+
+        <div class="col-3">
+            <div class="card-body bg-dark-purple rounded">
+                <img class="card-img-top" src="~/assets/randomImg/pexels-binyamin-mellish-186077.jpg" />
+                <p>en fin tekst</p>
+                <div class="justify-content-center">
+                    <button class="btn btn-primary w-100">Søg bolig</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="card-body bg-dark-purple rounded">
+                <img class="card-img-top" src="~/assets/randomImg/pexels-mark-mccammon-2724749.jpg" />
+                <p>en fin tekst</p>
+                <div class="justify-content-center">
+                    <button class="btn btn-primary w-100">Søg bolig</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="card-body bg-dark-purple rounded">
+                <img class="card-img-top" src="~/assets/randomImg/pexels-pixabay-279719.jpg" />
+                <p>en fin tekst</p>
+                <div class="justify-content-center">
+                    <button class="btn btn-primary w-100">Søg bolig</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+    <div id="lejemaalApi">
+
+    </div>
+
+</div>
+
+<script src="~/js/getLejemaal.js"></script>
