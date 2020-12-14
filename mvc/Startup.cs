@@ -45,12 +45,18 @@ namespace mvc
             services.AddControllersWithViews();
 
             services.AddDbContext<LejemaalContext>(options =>
-                options.UseSqlServer(Configuration["ConnectionStrings:LejemaalConnection"], x => x.MigrationsAssembly("Infrastructure")));
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("LejemaalConnection")));
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
+            //services.AddDbContext<LejemaalContext>(options =>
+            //    options.UseSqlServer(Configuration["ConnectionStrings:LejemaalConnection"], x => x.MigrationsAssembly("Infrastructure")));
 
 
             services.AddScoped<ILejemaalQuery, LejemaalQuery>();
             services.AddScoped<ILejemaalCommand, LejemaalCommand>();
             services.AddScoped<ILejemaalRepository, LejemaalRepository>();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
