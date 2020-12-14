@@ -9,7 +9,8 @@ using mvc.Models;
 
 namespace mvc.Controllers.Api
 {
-    public class LejemaalQueryController : Controller
+    [ApiController]
+    public class LejemaalQueryController : ControllerBase
     {
         public readonly ILejemaalQuery _lejemaalQuery;
 
@@ -20,7 +21,7 @@ namespace mvc.Controllers.Api
 
         //Read lejemaal by id
         [HttpGet]
-        [Route("GetLejemaalById/{id}")]
+        [Route("Api/GetLejemaalById/{id}")]
         public async Task<IActionResult> GetLejemaalById(int id)
         {
             var lejemaalViewModel = LejemaalMapper.MapGetLejemaalById(await _lejemaalQuery.Get(id));
@@ -29,7 +30,7 @@ namespace mvc.Controllers.Api
 
         //Read all lejemaal
         [HttpGet]
-        [Route("GetAllLejemaal")]
+        [Route("Api/GetAllLejemaal")]
         public async Task<IActionResult> GetAllLejemaal()
         {
             IEnumerable<LejemaalViewModel> lejemaal = LejemaalMapper.MapGetAllLejemaal(await _lejemaalQuery.GetAll());

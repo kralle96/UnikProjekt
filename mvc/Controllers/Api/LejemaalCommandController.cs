@@ -10,7 +10,8 @@ using mvc.Models;
 
 namespace mvc.Controllers.Api
 {
-    public class LejemaalCommandController : Controller
+    [ApiController]
+    public class LejemaalCommandController : ControllerBase
     {
         public readonly ILejemaalCommand _lejemaalCommand;
 
@@ -21,26 +22,29 @@ namespace mvc.Controllers.Api
 
         //Create lejemaal
         [HttpPost]
-        [Route("CreateLejemaal")]
-        public async void CreateLejemaal(LejemaalViewModel lejemaalViewModel)
+        [Route("Api/CreateLejemaal")]
+        public async Task<IActionResult> CreateLejemaal(LejemaalViewModel lejemaalViewModel)
         {
             await _lejemaalCommand.Execute(new LejemaalCommandModel.CreateLejemaal { Lejemaal = LejemaalMapper.MapLejemaal(lejemaalViewModel) });
+            return Ok("");
         }
 
-        ////Update lejemaal
-        //[HttpPut]
-        //[Route("UpdateLejemaal")]
-        //public async void UpdateLejemaal(LejemaalViewModel lejemaalViewModel)
-        //{
-        //    await _lejemaalCommand.Execute(new LejemaalCommandModel.UpdateLejemaal { Lejemaal = LejemaalMapper.MapLejemaal(lejemaalViewModel) });
-        //}
+        //Update lejemaal
+        [HttpPut]
+        [Route("Api/UpdateLejemaal")]
+        public async Task<IActionResult> UpdateLejemaal(LejemaalViewModel lejemaalViewModel)
+        {
+            await _lejemaalCommand.Execute(new LejemaalCommandModel.UpdateLejemaal { Lejemaal = LejemaalMapper.MapLejemaal(lejemaalViewModel) });
+            return Ok("");
+        }
 
         //Delete lejemaal
         [HttpDelete]
-        [Route("DeleteLejemaal")]
-        public async void DeleteLejemaal(LejemaalViewModel lejemaalViewModel)
+        [Route("Api/DeleteLejemaal")]
+        public async Task<IActionResult> DeleteLejemaal(LejemaalViewModel lejemaalViewModel)
         {
             await _lejemaalCommand.Execute(new LejemaalCommandModel.DeleteLejemaal { Lejemaal = LejemaalMapper.MapLejemaal(lejemaalViewModel) });
+            return Ok("");
         }
     }
 }
