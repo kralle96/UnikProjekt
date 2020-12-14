@@ -4,11 +4,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using Application.Commands.Repository;
-using Infrastructure.Lejemaal;
+using application.Commands.Repository;
+using infrastructure.Lejemaal;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repository
+namespace infrastructure.Repository
 {
     public class LejemaalRepository : ILejemaalRepository
     {
@@ -19,14 +19,14 @@ namespace Infrastructure.Repository
             _lejemaalContext = lejemaalContext;
         }
 
-        async Task ILejemaalRepository.Save(Domain.Model.Lejemaal lejemaal)
+        async Task ILejemaalRepository.Save(domain.Model.Lejemaal lejemaal)
         {
             if (!_lejemaalContext.Lejemaal.Any(a => a.Id == lejemaal.Id))
                 _lejemaalContext.Lejemaal.Add(lejemaal);
             await _lejemaalContext.SaveChangesAsync();
         }
 
-        async Task ILejemaalRepository.Update(Domain.Model.Lejemaal updatedLejemaal)
+        async Task ILejemaalRepository.Update(domain.Model.Lejemaal updatedLejemaal)
         {
             if (!_lejemaalContext.Lejemaal.Any(a => a.Id == updatedLejemaal.Id))
                 _lejemaalContext.Lejemaal.Add(updatedLejemaal);
@@ -35,7 +35,7 @@ namespace Infrastructure.Repository
             _lejemaalContext.SaveChanges();
         }
 
-        async Task<Domain.Model.Lejemaal> ILejemaalRepository.Load(int id)
+        async Task<domain.Model.Lejemaal> ILejemaalRepository.Load(int id)
         {
             var found = await _lejemaalContext.Lejemaal.FirstOrDefaultAsync(a => a.Id == id);
             if (found == null) 
@@ -43,7 +43,7 @@ namespace Infrastructure.Repository
             return found;
         }
 
-        async Task ILejemaalRepository.Delete(Domain.Model.Lejemaal lejemaal)
+        async Task ILejemaalRepository.Delete(domain.Model.Lejemaal lejemaal)
         {
             var found = await _lejemaalContext.Lejemaal.FirstOrDefaultAsync(a => a.Id == lejemaal.Id);
             if (found == null)

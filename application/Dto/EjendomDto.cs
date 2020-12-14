@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Application.Queries.DtoInterface;
+using application.Queries.DtoInterface;
 
-namespace Application.Dto
+namespace application.Dto
 {
     public class EjendomDto
     {

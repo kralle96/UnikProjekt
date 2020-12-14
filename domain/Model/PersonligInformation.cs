@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Model
+namespace domain.Model
 {
     public class PersonligInformation
     {

@@ -1,4 +1,4 @@
-﻿using Application.Dto;
+﻿using application.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,9 +45,9 @@ namespace mvc.Mappers
             return lejemaalViewModels;
         }
 
-        public static Application.Dto.LejemaalDto MapLejemaal(LejemaalViewModel lejemaalViewModel)
+        public static application.Dto.LejemaalDto MapLejemaal(LejemaalViewModel lejemaalViewModel)
         {
-            return new Application.Dto.LejemaalDto
+            return new application.Dto.LejemaalDto
             {
                 //begynder på index 1, fordi starten af ID'et her vil være L for lejemaal
                 LejemaalsId = Convert.ToInt32(lejemaalViewModel.LejemaalsId),

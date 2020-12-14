@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Queries
+namespace infrastructure.Queries
 {
     public class EjendomQueryKaj
     {

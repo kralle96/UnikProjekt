@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Boligsoegende
+namespace infrastructure.Boligsoegende
 {
     public class Stamdata
     {

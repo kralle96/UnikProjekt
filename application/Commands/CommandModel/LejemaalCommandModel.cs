@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Application.Dto;
+using application.Dto;
 
-namespace Application.Commands.CommandModel
+namespace application.Commands.CommandModel
 {
     public class LejemaalCommandModel
     {

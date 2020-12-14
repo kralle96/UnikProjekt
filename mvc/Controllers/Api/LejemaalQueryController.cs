@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.Queries.DtoInterface;
+using application.Queries.DtoInterface;
 using mvc.Mappers;
 using mvc.Models;
 
@@ -29,7 +29,7 @@ namespace mvc.Controllers.Api
 
         //Read all lejemaal
         [HttpGet]
-        [Route("Api/GetAllLejemaal")]
+        [Route("GetAllLejemaal")]
         public async Task<IActionResult> GetAllLejemaal()
         {
             IEnumerable<LejemaalViewModel> lejemaal = LejemaalMapper.MapGetAllLejemaal(await _lejemaalQuery.GetAll());

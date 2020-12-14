@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Services.Machine_Learning
+namespace application.Services.Machine_Learning
 {
     public class CPythonBinder
     {

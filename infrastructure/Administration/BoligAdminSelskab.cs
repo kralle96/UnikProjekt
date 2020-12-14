@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Administration
+namespace infrastructure.Administration
 {
     class BoligAdminSelskab
     {

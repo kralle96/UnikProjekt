@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Bolig.Mvc.Data.Migrations
+namespace bolig.Mvc.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

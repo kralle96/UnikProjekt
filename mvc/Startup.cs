@@ -11,14 +11,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.Commands.CommandInterface;
-using Application.Commands.ObjectCommand;
-using Application.Commands.Repository;
-using Application.Queries.DtoInterface;
-using Infrastructure.Lejemaal;
-using Infrastructure.Lejemaal.Queries;
-using Infrastructure.Repository;
-using mvc.Data;
+using application.Commands.CommandInterface;
+using application.Commands.ObjectCommand;
+using application.Commands.Repository;
+using application.Queries.DtoInterface;
+using bolig.Mvc.Data;
+using infrastructure.Lejemaal;
+using infrastructure.Lejemaal.Queries;
+using infrastructure.Repository;
 
 namespace mvc
 {

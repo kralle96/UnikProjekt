@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Application.Dto;
+using application.Dto;
 
-namespace Application.Queries.DtoInterface
+namespace application.Queries.DtoInterface
 {
     interface IHjemmeboendeBoernQuery
     {
