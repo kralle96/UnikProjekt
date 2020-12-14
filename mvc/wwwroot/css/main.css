@@ -1,0 +1,199 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+:root {
+    --global-text-color: #EEF5F9;
+    --global-primary-title-size: 2rem;
+    --global-link-color: #13C8FF;
+    --global-background-color: #586297;
+    --global-nav-box-footer-color: #434C78;
+    --global-inputbox-color: #515A88;
+    --global-error-color: #FF5252;
+    --global-button-color: #13C8FF;
+}
+
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: var(--global-link-color);
+}
+
+.btn-primary {
+  color: var(--global-text-color);
+  background-color: var(--global-button-color);
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: var(--global-text-color);
+  background-color: var(--global-color-primary);
+  border-color: #1861ac;
+}
+
+.bg-dark-purple {
+    background-color: var(--global-nav-box-footer-color);
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom:10%;
+    background-color: var(--global-background-color);
+    color: var(--global-text-color);
+      
+}
+
+#footer {
+    background-color: var(--global-nav-box-footer-color);
+    color: rgba(238, 245, 249,0.5);
+    right: 0;
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 2.5rem; /* Footer height */
+}
+
+
+
+.bg-img-index{
+    background-image:url(/assets/houses-banner.jpg);
+    height:auto;
+}
+
+.filter-criteria{
+    position:relative;
+    display:block;
+    width:100%;
+ }
+
+
+/*Handlebar*/
+.middle{
+    position:relative;
+    
+}
+
+.slider-range{
+    position:relative;
+    z-index:1;
+    height:10px;
+    margin: 0 2rem;
+}
+
+slider-range> .track{
+    position:absolute;
+    z-index:1;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    background-color:orange;
+}
+
+slider-range > .range {
+    position: absolute;
+    z-index: 2;
+    left: 25%;
+    right: 25%;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+    background-color: red;
+}
+
+.slider-range > .thumb {
+    position: absolute;
+    z-index: 3;
+    width: 30px;
+    height: 30px;
+    background-color: green;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(98,0,238,.1);
+    transition: box-shadow .3s ease-in-out;
+}
+
+    .slider-range > .thumb.left {
+        left: 25%;
+        transform: translate(-15px, -10px);
+    }
+
+    .slider-range > .thumb.right {
+        right: 25%;
+        transform: translate(15px, -10px);
+    }
+
+    .slider-range > .thumb.hover {
+        box-shadow: 0 0 0 20px rgba(98,0,238,.1);
+    }
+
+    .slider-range > .thumb.active {
+        box-shadow: 0 0 0 40px rgba(98,0,238,.2);
+    }
+
+input[type=range] {
+    position: absolute;
+    pointer-events: none;
+    -webkit-appearance: none;
+    z-index: 2;
+    height: 10px;
+    width: 100%;
+    opacity: 0;
+}
+
+    input[type=range]::-webkit-slider-thumb {
+        pointer-events: all;
+        width: 30px;
+        height: 30px;
+        border-radius: 0;
+        border: 0 none;
+        background-color: red;
+        -webkit-appearance: none;
+    }
+
+    .flex-div{
+        flex-direction:row;
+        display:flex;
+    }
+
+
