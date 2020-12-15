@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace application.Services.Machine_Learning
 {
-    public class CPythonBinder
+    public class CPythonBinder : ICPythonBinder
     {
         public string MakePrediction(string script, string pyPath, List<object> parameters)
         {
-
-
             String prg = script;
             StreamWriter sw = new StreamWriter(pyPath);
             sw.Write(prg); // write this program to a file
