@@ -9,26 +9,35 @@ using application.Exceptions;
 
 namespace application.Services.Machine_Learning
 {
+    //benytter den machine learning model der estimere antal år en givet ansøger vil blive boende i et givet lejemaal.
+
+    //NOTE: Forklaring af filerne der bruges i python-scripted kan ses i den tilhørende notebook, hvor machine learning modellen
+    //blev udviklet. Forklaring af hvordan den er blevet lavet og hvordan dataet er blevet behandlet står også der.
     public class NumberOfYearsPredictionPython : IPythonScript
     {
-        public string Script { get; private set; }
+        public string Script { get; private set; } //scriptet der skal køres i python
+
+        //næste seks properties er de parametre modellen er trænet på
         public string Sex { get; private set; }
         public int ResidentsInTheTenancy { get; private set; }
         public int NumberOfRoomsInTheTenancy { get; private set; }
         public string TypeOfTenancy { get; private set; }
         public string ResidentAgeGroup { get; private set; }
         public string LocationOfTenancy { get; private set; }
+        //list til at holde parametre
         public List<object> Parameters { get; set; }
+        //path til python.py filen der skal køres
         public string ScriptPath { get; set; } = @"..\application\Root\PythonScript\python\unik_machine_learning_script\test\test.py";
        
         public NumberOfYearsPredictionPython(string sex, int residentsInTheTenancy, int numberOfRoomsInTheTenancy,
             string typeOfTenancy, string locationOfTenancy, int residentAge)
         {
-            //var s = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            //validere input til modellen
             ValidateInputForModel(sex, typeOfTenancy, locationOfTenancy, residentAge);
             ResidentsInTheTenancy = residentsInTheTenancy;
             NumberOfRoomsInTheTenancy = numberOfRoomsInTheTenancy;
 
+            //tilføj til parametrer-listen
             Parameters = new List<object>();
             Parameters.Add(Sex);
             Parameters.Add(ResidentsInTheTenancy);
@@ -37,11 +46,13 @@ namespace application.Services.Machine_Learning
             Parameters.Add(LocationOfTenancy);
             Parameters.Add(ResidentAgeGroup);
 
+            //lav scriptet
             Script = SetScript();
         }
         public void ValidateInputForModel(string sex, string typeOfTenancy, string locationOfTenancy,
             int residentAge)
         {
+            //valider og "oversæt" til den dataform modellen er trænet på.
             TranslateSex(sex);
             TranslateTypeOfTenancy(typeOfTenancy);
             TranslateLocationOfTenancy(locationOfTenancy);
@@ -147,6 +158,8 @@ namespace application.Services.Machine_Learning
         }
         public string SetScript()
         {
+            //scriptet der skal køres i python
+
             return @"import sys
 import numpy as np
 import pandas as pd

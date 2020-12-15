@@ -13,6 +13,7 @@ namespace application.Commands.ObjectCommand
     // Bruges til Infrastructure niveau
     public class LejemaalCommand : ILejemaalCommand
     {
+        //dependency injection
         private readonly ILejemaalRepository _lejemaalRepository;
 
         public LejemaalCommand(ILejemaalRepository lejemaalRepository)
@@ -20,6 +21,7 @@ namespace application.Commands.ObjectCommand
             _lejemaalRepository = lejemaalRepository;
         }
 
+        //Giver data fra LejemaalDto til Lejemaal i domænet
         async Task ILejemaalCommand.Execute(LejemaalCommandModel.CreateLejemaal createLejemaal)
         {
             var lejemaal = new domain.Model.Lejemaal()
@@ -35,6 +37,7 @@ namespace application.Commands.ObjectCommand
             }; ;
             await _lejemaalRepository.Save(lejemaal);
         }
+
 
         async Task ILejemaalCommand.Execute(LejemaalCommandModel.UpdateLejemaal updateLejemaal)
         {
