@@ -16,7 +16,7 @@ namespace mvc.Models
         public string? Energimaerke { get; set; }
         public string Type { get; set; }
 
-        //validering
+        //validering her
     }
 
 

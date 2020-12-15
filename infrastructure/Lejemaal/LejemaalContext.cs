@@ -7,9 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace infrastructure.Lejemaal
 {
+    //context repræsentere databasen i programmet
     public class LejemaalContext : DbContext
     {
-        
+        //hver af disse repræsenterer en tupel i databasen
         public DbSet<domain.Model.Lejemaal> Lejemaal { get; set; }
         public DbSet<domain.Model.Udlejningsinfo> Udlejningsinfo { get; set; }
         public DbSet<domain.Model.Post> Post { get; set; }
@@ -34,17 +35,6 @@ namespace infrastructure.Lejemaal
                 .HasOne(p => p.PostNr)
                 .WithMany(l => l.Lejemaal);
 
-            ////n-m relationer
-            //modelBuilder.Entity<InventarLejemaal>()
-            //    .HasKey(il => il.InventarLejemaalId);
-            //modelBuilder.Entity<InventarLejemaal>() //we pray
-            //    .HasOne(i => i.Inventar)
-            //    .WithMany(il => il.InventarLejemaal)
-            //    .HasForeignKey(i => i.InventarLejemaalId);
-            //modelBuilder.Entity<InventarLejemaal>()
-            //    .HasOne(l => l.Lejemaal)
-            //    .WithMany(il => il.InventarLejemaal)
-            //    .HasForeignKey(i => i.InventarLejemaalId);
         }
     }
 }

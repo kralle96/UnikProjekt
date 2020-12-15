@@ -10,6 +10,7 @@ using mvc.Models;
 
 namespace mvc.Controllers.Api
 {
+    //Api til at tilgå commands vedrørende lejemaal
     [ApiController]
     public class LejemaalCommandController : ControllerBase
     {

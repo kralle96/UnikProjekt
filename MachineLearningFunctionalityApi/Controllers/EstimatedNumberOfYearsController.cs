@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace MachineLearningFunctionalityApi.Controllers
 {
+    //api til at benytte vores machine learning modeller
+
     [ApiController]
     public class EstimatedNumberOfYearsController : Controller
     {
@@ -17,6 +19,7 @@ namespace MachineLearningFunctionalityApi.Controllers
             string region, int ansoegerAlder)
         {
             //bør blive dependency injected... Følger ikke SOLID
+
             NumberOfYearsPredictionPython estimation = new NumberOfYearsPredictionPython(koen, antalBeboereILejemaal,
                 antalVaerelser, lejemaalType, region, ansoegerAlder);
             CPythonBinder binder = new CPythonBinder();

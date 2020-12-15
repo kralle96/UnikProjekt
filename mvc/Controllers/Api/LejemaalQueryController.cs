@@ -9,6 +9,8 @@ using mvc.Models;
 
 namespace mvc.Controllers.Api
 {
+    //Api til at tilgå queries vedrørende lejemaal
+
     [ApiController]
     public class LejemaalQueryController : ControllerBase
     {

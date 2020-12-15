@@ -7,8 +7,7 @@ namespace domainTest
     [TestClass]
     public class LejemaalUnitTest
     {
-        
-
+        //test til at tjekke om metoden fanger en for lang addresse
         [TestMethod]
         public void ValidateAdresse_StringToLong_Paas()
         {
@@ -23,6 +22,7 @@ namespace domainTest
             Assert.IsFalse(test);
         }
 
+        //test til at tjekke om metoden fanger en for kort addresse
         [TestMethod]
         public void ValidateAdresse_StringIsToShort_Paas()
         {
@@ -37,6 +37,7 @@ namespace domainTest
             Assert.IsFalse(test);
         }
 
+        //test til at tjekke om metoden fanger en adresse med specielle tegn
         [TestMethod]
         public void ValidateAdresse_StringContainsSpecialChars_Pass()
         {
