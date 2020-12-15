@@ -7,12 +7,13 @@ namespace domainTest
     [TestClass]
     public class LejemaalUnitTest
     {
-        Lejemaal lejemaal = new Lejemaal();
+        
 
         [TestMethod]
         public void ValidateAdresse_StringToLong_Paas()
         {
             // Arrange
+            Lejemaal lejemaal = new Lejemaal();
             string adresse = "StringIsToLongToPaas";
 
             // Act
@@ -26,6 +27,7 @@ namespace domainTest
         public void ValidateAdresse_StringIsToShort_Paas()
         {
             // Arrange
+            Lejemaal lejemaal = new Lejemaal();
             string adresse = "h";
 
             // Act
@@ -39,6 +41,7 @@ namespace domainTest
         public void ValidateAdresse_StringContainsSpecialChars_Pass()
         {
             // Arrange
+            Lejemaal lejemaal = new Lejemaal();
             string adresse = "Vimmersvej/";
 
             // Act
