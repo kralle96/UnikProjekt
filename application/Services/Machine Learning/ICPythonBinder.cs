@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace application.Services.Machine_Learning
 {
-    interface ICPythonBinder
+    public interface ICPythonBinder
     {
         string MakePrediction(string script, string pyPath, List<object> parameters);
     }

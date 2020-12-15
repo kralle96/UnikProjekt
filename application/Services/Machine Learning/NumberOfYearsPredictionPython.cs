@@ -18,8 +18,8 @@ namespace application.Services.Machine_Learning
         public string TypeOfTenancy { get; private set; }
         public string ResidentAgeGroup { get; private set; }
         public string LocationOfTenancy { get; private set; }
-        public List<object> Parameters { get; private set; }
-        public string ScriptPath { get; set; } = @"..\Bolig.Application\Root\PythonScript\python\unik_machine_learning_script\test\test.py";
+        public List<object> Parameters { get; set; }
+        public string ScriptPath { get; set; } = @"..\application\Root\PythonScript\python\unik_machine_learning_script\test\test.py";
        
         public NumberOfYearsPredictionPython(string sex, int residentsInTheTenancy, int numberOfRoomsInTheTenancy,
             string typeOfTenancy, string locationOfTenancy, int residentAge)
@@ -47,7 +47,6 @@ namespace application.Services.Machine_Learning
             TranslateLocationOfTenancy(locationOfTenancy);
             SplitResidentIntoAgeGroup(residentAge);
         }
-
         private void TranslateSex(string sex)
         {
             if (sex == "Mand")
@@ -168,17 +167,16 @@ data = pd.DataFrame({
                      'LocationOfTenancy' : [sys.argv[5]],
                      'ResidentAgeGroup' : [sys.argv[6]]})
 
-
-with open('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/Cat_mapping/sex_mapping.pkl', 'rb') as pickle_file:
+with open('../application/Root/Cat_mapping/sex_mapping.pkl', 'rb') as pickle_file:
     sex_mapping = pickle.load(pickle_file)
 
-with open('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/Cat_mapping/type_of_tenancy_mapping.pkl', 'rb') as pickle_file:
+with open('../application/Root/Cat_mapping/type_of_tenancy_mapping.pkl', 'rb') as pickle_file:
     type_of_tenancy_mapping = pickle.load(pickle_file)
 
-with open('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/Cat_mapping/location_of_tenancy_mapping.pkl', 'rb') as pickle_file:
+with open('../application/Root/Cat_mapping/location_of_tenancy_mapping.pkl', 'rb') as pickle_file:
     location_of_tenancy_mapping = pickle.load(pickle_file)
 
-with open('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/Cat_mapping/resident_age_group_mapping.pkl', 'rb') as pickle_file:
+with open('../application/Root/Cat_mapping/resident_age_group_mapping.pkl', 'rb') as pickle_file:
     resident_age_group_mapping = pickle.load(pickle_file)
 
 for key, value in sex_mapping.items():
@@ -200,12 +198,12 @@ for key, value in resident_age_group_mapping.items():
 
 #Import trained model
 
-with open('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/MLModel/SVR_baseline.pkl', 'rb') as pickle_file:
+with open('../application/Root/MLModel/SVR_baseline.pkl', 'rb') as pickle_file:
     model = pickle.load(pickle_file)
 
 # Import rescalers the model was trained on
-rbX = joblib.load('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/Scalers/rbX.bin')
-rbY = joblib.load('C:/Users/Nichlas/Desktop/Projekt 3. semester/Bolig.Application/Root/Scalers/rbY.bin')
+rbX = joblib.load('../application/Root/Scalers/rbX.bin')
+rbY = joblib.load('../application/Root/Scalers/rbY.bin')
 
 #Rescale input and predict
 data = rbX.transform(data)
