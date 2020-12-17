@@ -4,6 +4,7 @@ using domain.Model;
 
 namespace domainTest
 {
+    //Testklasse til at teste metoder i domain.Model.Lejemaal
     [TestClass]
     public class LejemaalUnitTest
     {
