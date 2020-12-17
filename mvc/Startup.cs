@@ -19,6 +19,7 @@ using bolig.Mvc.Data;
 using infrastructure.Lejemaal;
 using infrastructure.Lejemaal.Queries;
 using infrastructure.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace mvc
 {
@@ -35,6 +36,7 @@ namespace mvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -57,6 +59,35 @@ namespace mvc
             services.AddScoped<ILejemaalCommand, LejemaalCommand>();
             services.AddScoped<ILejemaalRepository, LejemaalRepository>();
             services.AddCors();
+
+            //option configuration of identity
+            services.Configure<IdentityOptions>(options =>
+            {
+                //password settings
+                options.Password.RequiredLength = 8;
+                options.Password.RequireDigit = true;
+
+                //lockout settings
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+
+                //user settings
+                options.User.RequireUniqueEmail = true;
+            });
+
+            //Cookie configuration
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => {
+                    options.LoginPath = "/Account/Login";
+                    options.LogoutPath = "/Account/Logout";
+                    options.Cookie.Name = "auth20_cookie";
+                    options.Cookie.HttpOnly = false;
+                    options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None;
+                });
+
+            services.AddMvc();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,6 +109,7 @@ namespace mvc
             app.UseStaticFiles();
 
             app.UseRouting();
+          
 
             app.UseAuthentication();
             app.UseAuthorization();
