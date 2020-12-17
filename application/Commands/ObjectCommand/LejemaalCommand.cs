@@ -22,6 +22,7 @@ namespace application.Commands.ObjectCommand
         }
 
         //Giver data fra LejemaalDto til Lejemaal i domænet
+        //Igangsætter Save-metoden i infrastructure
         async Task ILejemaalCommand.Execute(LejemaalCommandModel.CreateLejemaal createLejemaal)
         {
             var lejemaal = new domain.Model.Lejemaal()
@@ -38,13 +39,10 @@ namespace application.Commands.ObjectCommand
             await _lejemaalRepository.Save(lejemaal);
         }
 
-
+        //Giver data fra LejemaalDto til Lejemaal i domænet
+        //Igangsætter den update-metode i infrastructure
         async Task ILejemaalCommand.Execute(LejemaalCommandModel.UpdateLejemaal updateLejemaal)
         {
-            //var lejemaal = await _lejemaalRepository.Load(updateLejemaal.Lejemaal.LejemaalsId);
-            //await _lejemaalRepository.Update(lejemaal);
-
-            //awit _lejemaalRepository.Update(updateLejemaal)
 
             var updatedLejemaal = new domain.Model.Lejemaal()
             {
@@ -61,6 +59,8 @@ namespace application.Commands.ObjectCommand
             await _lejemaalRepository.Update(updatedLejemaal);
         }
 
+        //Giver data fra LejemaalDto til Lejemaal i domænet
+        //Igangsætter den delete-metode i infrastructure
         async Task ILejemaalCommand.Execute(LejemaalCommandModel.DeleteLejemaal deleteLejemaal)
         {
             var lejemaal = await _lejemaalRepository.Load(deleteLejemaal.Lejemaal.LejemaalsId);

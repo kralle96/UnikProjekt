@@ -13,6 +13,7 @@ namespace application.Services.Machine_Learning
 
     //NOTE: Forklaring af filerne der bruges i python-scripted kan ses i den tilhørende notebook, hvor machine learning modellen
     //blev udviklet. Forklaring af hvordan den er blevet lavet og hvordan dataet er blevet behandlet står også der.
+    //Notebook kan findes i SUM-rapporten under bilag
     public class NumberOfYearsPredictionPython : IPythonScript
     {
         public string Script { get; private set; } //scriptet der skal køres i python

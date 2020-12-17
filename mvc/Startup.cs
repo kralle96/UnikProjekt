@@ -51,9 +51,6 @@ namespace mvc
                     Configuration.GetConnectionString("LejemaalConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            //services.AddDbContext<LejemaalContext>(options =>
-            //    options.UseSqlServer(Configuration["ConnectionStrings:LejemaalConnection"], x => x.MigrationsAssembly("Infrastructure")));
-
 
             services.AddScoped<ILejemaalQuery, LejemaalQuery>();
             services.AddScoped<ILejemaalCommand, LejemaalCommand>();

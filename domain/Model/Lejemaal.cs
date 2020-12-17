@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using domain.Exceptions;
-//using Domain.MyDomainService.Interface;
 
 namespace domain.Model
 {
