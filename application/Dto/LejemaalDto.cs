@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace application.Dto
 {
+    //Dto til at vidergive data mellem lagene
     public class LejemaalDto
     {
         // Properties

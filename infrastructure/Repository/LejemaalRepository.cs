@@ -19,6 +19,7 @@ namespace infrastructure.Repository
             _lejemaalContext = lejemaalContext;
         }
 
+        //gem lejemaal i databasen
         async Task ILejemaalRepository.Save(domain.Model.Lejemaal lejemaal)
         {
             if (!_lejemaalContext.Lejemaal.Any(a => a.Id == lejemaal.Id))
@@ -26,6 +27,7 @@ namespace infrastructure.Repository
             await _lejemaalContext.SaveChangesAsync();
         }
 
+        //opdatere lejemaal i databasen
         async Task ILejemaalRepository.Update(domain.Model.Lejemaal updatedLejemaal)
         {
             if (!_lejemaalContext.Lejemaal.Any(a => a.Id == updatedLejemaal.Id))
@@ -35,6 +37,7 @@ namespace infrastructure.Repository
             _lejemaalContext.SaveChanges();
         }
 
+        //indlæs lejemaal på id fra databasen
         async Task<domain.Model.Lejemaal> ILejemaalRepository.Load(int id)
         {
             var found = await _lejemaalContext.Lejemaal.FirstOrDefaultAsync(a => a.Id == id);
@@ -42,6 +45,8 @@ namespace infrastructure.Repository
                 throw new Exception($"blog not found (id: {id}");
             return found;
         }
+
+        //slet lejemaal fra databasen
 
         async Task ILejemaalRepository.Delete(domain.Model.Lejemaal lejemaal)
         {

@@ -7,6 +7,7 @@ using mvc.Models;
 
 namespace mvc.Mappers
 {
+    //mapper data fra LejemaalViewModel til LejemaalDto og omvendt
     public class LejemaalMapper
     {
         public static LejemaalViewModel MapGetLejemaalById(LejemaalDto data)

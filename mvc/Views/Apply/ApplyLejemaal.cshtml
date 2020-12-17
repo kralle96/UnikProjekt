@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Apply";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class=" container">
+    <div class="row">
+        <div class="card-body bg-dark-purple rounded">
+
+            <section>
+                <form method="post">
+
+                    <h1>Ansøg Bolig</h1>
+
+
+                    <label for="firstname">Bolig Id:</label><br />
+                    <input class="text-muted mr-2" type="text" id="firstname" name="firstname" placeholder="Jagtvej - 39275930" />
+
+
+                    <label for="moreInfo">Yderligere kommentarer til ansøgningen </label><br />
+
+                    <textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>
+
+                    <input type="submit" value="Submit">
+
+
+                </form>
+
+
+            </section>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>

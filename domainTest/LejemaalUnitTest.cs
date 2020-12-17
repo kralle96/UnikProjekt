@@ -4,15 +4,16 @@ using domain.Model;
 
 namespace domainTest
 {
+    //Testklasse til at teste metoder i domain.Model.Lejemaal
     [TestClass]
     public class LejemaalUnitTest
     {
-        Lejemaal lejemaal = new Lejemaal();
-
+        //test til at tjekke om metoden fanger en for lang addresse
         [TestMethod]
         public void ValidateAdresse_StringToLong_Paas()
         {
             // Arrange
+            Lejemaal lejemaal = new Lejemaal();
             string adresse = "StringIsToLongToPaas";
 
             // Act
@@ -22,10 +23,12 @@ namespace domainTest
             Assert.IsFalse(test);
         }
 
+        //test til at tjekke om metoden fanger en for kort addresse
         [TestMethod]
         public void ValidateAdresse_StringIsToShort_Paas()
         {
             // Arrange
+            Lejemaal lejemaal = new Lejemaal();
             string adresse = "h";
 
             // Act
@@ -35,10 +38,12 @@ namespace domainTest
             Assert.IsFalse(test);
         }
 
+        //test til at tjekke om metoden fanger en adresse med specielle tegn
         [TestMethod]
         public void ValidateAdresse_StringContainsSpecialChars_Pass()
         {
             // Arrange
+            Lejemaal lejemaal = new Lejemaal();
             string adresse = "Vimmersvej/";
 
             // Act

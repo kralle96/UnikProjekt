@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace application.Commands.Repository
 {
+    //Interface der implementeres i Infrastructure
     public interface ILejemaalRepository
     {
         Task Save(domain.Model.Lejemaal lejemaal);

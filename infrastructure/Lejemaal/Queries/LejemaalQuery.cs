@@ -19,8 +19,7 @@ namespace infrastructure.Lejemaal.Queries
         // Retunere alle Lejemål
         async Task<IEnumerable<LejemaalDto>> ILejemaalQuery.GetAll()
         {
-            //return await _LejemaalContext.Lejemaal.AsNoTracking().Select(a => new LejemaalDto { LejemaalsId = a.Id }).ToListAsync();
-
+            
             return await _LejemaalContext.Lejemaal.AsNoTracking().Select(a => new LejemaalDto
             {
                 LejemaalsId = a.Id,
