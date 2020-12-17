@@ -24,6 +24,22 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Bolig" asp-action="FindBolig">Søg Bolig</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Apply" asp-action="Apply">Ansøg Bolig</a>
+                        </li>
+
+                        <div class="dropdown show">
+                            <a class="btn dropdown-toggle text-light" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Lejemål
+                            </a>
+
+                            <div class="dropdown-menu bg-dark-purple" aria-labelledby="dropdownMenuLink">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Lejemaal" asp-action="Lejemaal">Opret lejemål</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Lejemaal" asp-action="UpdateLejemaal">Rediger lejemål</a>
+
+                            </div>
+                        </div>
+
                     </ul>
 
                 </div>
@@ -45,23 +61,25 @@
     <footer id="footer" class="mt-2 pt-3">
         <div class="container">
             <div class="row">
-                <div class=" col-lg-4 ">
+                <div class=" col-lg-6 ">
                     <h5>Kontakt</h5>
-                    <address>Adresse</address>
-                    <p>Email: email</p>
+                    <address>Adresse: Boulevarden 19E</address>
+                    <p>Email: email@mail.com</p>
                 </div>
-                <div class=" col-lg-4 ">
-                    <h5>Kontakt</h5>
-                    <address>Adresse</address>
-                    <p>Email: email</p>
+
+
+                <div class=" col-lg-6 ">
+                    <h5>Find Lejebolig</h5>
+
+                    <p>
+                        Hos Unik udvikler vi software til mennesker, der arbejder inden for bolig- og ejendomsadministration samt advokatkontorer.
+                    </p>
+
+                    </p>
                 </div>
-                <div class=" col-lg-4 ">
-                    <h5>Kontakt</h5>
-                    <address>Adresse</address>
-                    <p>Email: email</p>
-                </div>
+
             </div>
-            <p class="m-0 text-center">Copyright &copy; Your Website 2020</p>
+            <p class="m-0 text-center">Copyright &copy; Gruppe-1 2020</p>
         </div>
 
     </footer>
@@ -69,7 +87,9 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    @*<script src="~/js/site.js" asp-append-version="true"></script>*@
+    @*<script src="~/js/site.js"></script>*@
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>
