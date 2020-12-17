@@ -21,7 +21,7 @@
                             <label for="search">Til:</label>
                             <input class="text-muted w-25" type="text" id="search" name="search" placeholder="7000" />
 
-                           
+
 
                         </div>
 
@@ -86,7 +86,20 @@
             </div>
 
         </div>
+        <div class="col-9 col-sm-9">
+            <div class="d-flex justify-content-end">
+                <div class="spinner-border"
+                     role="status" id="loading">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
 
+
+
+            <h1>Lejemål på en liste</h1>
+            
+            <table id="her" class="align-content-end text-right"></table>
+        </div>
         <div class="col-3">
             <div class="card-body bg-dark-purple rounded">
                 <img class="card-img-top" src="~/assets/randomImg/pexels-binyamin-mellish-186077.jpg" />
@@ -120,8 +133,11 @@
 
 
     </div>
+ 
 
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+</script>
 
-<script src="~/js/addRange.js"></script>
+<script src="~/js/fetchLejemaal.js"></script>
